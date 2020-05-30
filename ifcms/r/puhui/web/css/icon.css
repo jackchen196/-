@@ -1,0 +1,14 @@
+.icon-update,
+.icon-update-sm {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/icon-update.png) center center no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.icon-update-sm {
+    width: 17px;
+    height: 17px;
+}

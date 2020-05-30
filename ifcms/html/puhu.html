@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>页面已失效</title>
+    <link rel="stylesheet" href="/ifcms/r/puhui/web/css/main.css" />
+    <link rel="stylesheet" href="/ifcms/r/puhui/web/css/swiper.min1.css" />
+
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="header">
+    </div>
+    <div class="errordiv">
+        <span class="spmiddle">当前页面已过期</span><br />
+        <div class="daojishi">
+            <span id="cutdownsec">5</span>&nbsp;秒后自动跳转至新系统</div>
+        <input type="button" onclick="backindex()" value="立即进入新系统" class="orange-button" style="width: 150px;" />
+        <div class="clear">
+        </div>
+    </div>
+    <!--footer-->
+    <div id="footer">
+    </div>
+</body>
+<script type="text/javascript" src="/ifcms/r/puhui/web/lib/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = leaveCountdown(5);
+
+    function backindex() {
+        window.open("/index.shtml", "_self");
+    }
+
+    function leaveCountdown(time) {
+        clearTimeout(timer);
+        if (time == 'undefined')
+            time = 5;
+        $("#cutdownsec").html(time);
+        time = time - 1;
+        if (time >= 0) {
+            var timer = setTimeout("leaveCountdown(" + time + ")", 1000);
+        } else {
+            window.open("/index.shtml", "_self");
+        }
+    }
+    var header = "";
+    var footer = "";
+    var host = window.location.host;
+    if (host.indexOf('stg') >= 0) {
+        header = "/ifcms/html/puhui/publicpage/M359webHeader.html";
+        footer = "/ifcms/html/puhui/publicpage/M359webFooter.html";
+        weburl = "http://pingancache.com:81";
+    } else {
+        header = "/ifcms/html/puhui/publicpage/M2webHeader.html";
+        footer = "/ifcms/html/puhui/publicpage/M2webFooter.html";
+        weburl = "http://pingancache.com:81";
+    }
+    $('.header').load(header);
+    $('#footer').load(footer);
+</script>
+
+</html>
